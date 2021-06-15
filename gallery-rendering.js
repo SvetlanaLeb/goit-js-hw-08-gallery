@@ -47,11 +47,18 @@ function onGalleryListClick(evt) {
     refs.modalBox.classList.add('is-open');
     refs.lightboxImage.src = `${galleryItemEl.dataset.source}`;
     refs.lightboxImage.alt = `${galleryItemEl.alt}`;
+
+    let newGalleryLeftItemEl;
+    let newGalleryRightItemEl;
+
+    if (galleryItemEl.parentNode.previousElementSibling !== null) {
+     newGalleryLeftItemEl = galleryItemEl.parentNode.previousElementSibling.firstElementChild;
+    };
+    if (galleryItemEl.parentNode.nextElementSibling !== null) {
+     newGalleryRightItemEl = galleryItemEl.parentNode.nextElementSibling.firstElementChild;
+    }
     
-    let newGalleryLeftItemEl = galleryItemEl.parentNode.previousElementSibling.firstElementChild;
-    let newGalleryRightItemEl = galleryItemEl.parentNode.nextElementSibling.firstElementChild;
-    
-    window.addEventListener('keydown', (event) =>{
+    window.addEventListener('keydown', (event) =>{console.log(newGalleryRightItemEl)
    
         if (event.code === 'ArrowLeft') {
 
