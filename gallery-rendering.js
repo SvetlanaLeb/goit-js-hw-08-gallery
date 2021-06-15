@@ -53,47 +53,65 @@ function onGalleryListClick(evt) {
     
     window.addEventListener('keydown', (event) =>{
    
-    if (event.code === 'ArrowLeft') {
-        
-        refs.lightboxImage.src = `${newGalleryLeftItemEl.dataset.source}`;
-        refs.lightboxImage.alt = `${newGalleryLeftItemEl.alt}`;
-        newGalleryLeftItemEl = newGalleryLeftItemEl.parentNode.previousElementSibling.firstElementChild;
-        
-        
+        if (event.code === 'ArrowLeft') {
+
+             refs.lightboxImage.src = `${newGalleryLeftItemEl.dataset.source}`;
+             refs.lightboxImage.alt = `${newGalleryLeftItemEl.alt}`;
+            
+            if (newGalleryLeftItemEl.parentNode.previousElementSibling !== null) {
+                
+                newGalleryLeftItemEl = newGalleryLeftItemEl.parentNode.previousElementSibling.firstElementChild;
+                newGalleryRightItemEl = newGalleryLeftItemEl.parentNode.nextElementSibling.firstElementChild;
+            };
         };
-    if (event.code === 'ArrowRight') {
-        
-        refs.lightboxImage.src = `${newGalleryRightItemEl.dataset.source}`;
-        refs.lightboxImage.alt = `${newGalleryRightItemEl.alt}`;
-        newGalleryRightItemEl = newGalleryRightItemEl.parentNode.nextElementSibling.firstElementChild;
-         
-        };    
-});
+       
+        if (event.code === 'ArrowRight') {
+            
+            refs.lightboxImage.src = `${newGalleryRightItemEl.dataset.source}`;
+            refs.lightboxImage.alt = `${newGalleryRightItemEl.alt}`;
+            
+            if ( newGalleryRightItemEl.parentNode.nextElementSibling !== null) {
+            
+                newGalleryRightItemEl = newGalleryRightItemEl.parentNode.nextElementSibling.firstElementChild;
+                newGalleryLeftItemEl = newGalleryRightItemEl.parentNode.previousElementSibling.firstElementChild;
+            };
+        }
+    });
 
 }
    
 
 
 function onCloseButtonClick() {
-    window.removeEventListener('keydown', onEscKeyPress);
+  
+  window.removeEventListener('keydown', onEscKeyPress);
 
-    window.removeEventListener('keydown', (event) =>{
+  window.removeEventListener('keydown', (event) =>{
    
-    if (event.code === 'ArrowLeft') {
-        
-        refs.lightboxImage.src = `${newGalleryItemEl.dataset.source}`;
-        refs.lightboxImage.alt = `${newGalleryItemEl.alt}`;
-        newGalleryItemEl = newGalleryItemEl.parentNode.previousElementSibling.firstElementChild;
-        
+        if (event.code === 'ArrowLeft') {
+
+             refs.lightboxImage.src = `${newGalleryLeftItemEl.dataset.source}`;
+             refs.lightboxImage.alt = `${newGalleryLeftItemEl.alt}`;
+            
+            if (newGalleryLeftItemEl.parentNode.previousElementSibling !== null) {
+                
+                newGalleryLeftItemEl = newGalleryLeftItemEl.parentNode.previousElementSibling.firstElementChild;
+                newGalleryRightItemEl = newGalleryLeftItemEl.parentNode.nextElementSibling.firstElementChild;
+            };
         };
-    if (event.code === 'ArrowRight') {
-        
-        refs.lightboxImage.src = `${newGalleryItemEl.dataset.source}`;
-        refs.lightboxImage.alt = `${newGalleryItemEl.alt}`;
-        newGalleryItemEl = newGalleryItemEl.parentNode.nextElementSibling.firstElementChild;
-        
-        };    
-});
+       
+        if (event.code === 'ArrowRight') {
+            
+            refs.lightboxImage.src = `${newGalleryRightItemEl.dataset.source}`;
+            refs.lightboxImage.alt = `${newGalleryRightItemEl.alt}`;
+            
+            if ( newGalleryRightItemEl.parentNode.nextElementSibling !== null) {
+            
+                newGalleryRightItemEl = newGalleryRightItemEl.parentNode.nextElementSibling.firstElementChild;
+                newGalleryLeftItemEl = newGalleryRightItemEl.parentNode.previousElementSibling.firstElementChild;
+            };
+        }
+    });
 
     refs.modalBox.classList.remove('is-open');
     refs.lightboxImage.src ='';
